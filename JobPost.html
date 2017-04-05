@@ -351,7 +351,7 @@
                         <div class="form-group">
                             <label class="col-sm-4 textchange" for="sel1">Expiery Date:</label>
                             <div class="col-sm-8">
-                                <md-datepicker ng-model="myDate" md-placeholder="Enter date"></md-datepicker>
+                                <md-datepicker ng-model="Jobpost.Expiery" md-placeholder="Enter date"></md-datepicker>
                             </div>
                         </div> <br>    
                          <!-- Selection Type interview ,Written test,off campus-->
@@ -367,23 +367,13 @@
                             </div>
                      </div><br> 
                      <!--Conditional Statements-->
-                    <div ng-if="Jobpost.selectionType == 'Interview'">
+                    <div ng-if="Jobpost.selectionType == 'Interview' or Jobpost.selectionType == 'off campus'">
                         <div class="form-group">
                             <label class="col-sm-4 textchange" for="sel1">Address:</label>
                             <div class="col-sm-8">
-                                <textarea rows="5" class="form-control" placeholder="Address" name="email" ng-model="data.reg_email" required></textarea>
+                                <textarea rows="5" class="form-control" placeholder="Address" name="email" ng-model="data.Address" required></textarea>
                             </div>
                         </div><br>  
-                    </div>
-                    <!--Conditional Statements-->
-                    <div ng-if="Jobpost.selectionType == 'off campus'">
-                        <div class="form-group">
-                            <label class="col-sm-4 textchange" for="sel1">Address:</label>
-                            <div class="col-sm-8">
-                                <label for="sel11">Job Role :</label>
-                                    <textarea rows="5" class="form-control" placeholder="Job Role" name="email" ng-model="data.reg_email" required></textarea>
-                            </div>
-                        </div><br>
                     </div>
                     <!--company apply url-->
                     <div class="form-group">
