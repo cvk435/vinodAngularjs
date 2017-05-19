@@ -1,0 +1,35 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+        <h2 class="page-header">Stories <span style="color:black" ng-show="selectedname !='' "> : {{selectedname}}</span></h2>
+    </div>
+  </div>
+  <div class="row" >
+      <div class="h-scroll-page">
+    <div class="col-sm-6" ng-repeat="Story in Storys | filter: {story_category_id:selectedid} ">
+      <div class="story-pannel-body story-bg1">
+        <div class="story-list">
+          <ul>
+            <li><span>Title</span> {{Story.story_title}}</li>
+            <li><span>Person Name:</span> {{Story.story_person_name}}</li>
+          </ul>
+        </div>
+
+        <p class="mt-10" ng-show="Story.story_content.length <=20">{{Story.story_content |  limitTo:20}} </p>
+        <p class="mt-10" ng-show="Story.story_content.length >20">{{Story.story_content | limitTo:
+                 Story.is_active ?  100:Story.story_content }}
+                 <span style="color:black" > </span>
+                 <span ng-click="showchanges(Storys.indexOf(Story))" ng-if="Story.is_active==true" ><strong class="cur">{{".. more"}}</strong></span>
+                 <span ng-click="showchanges(Storys.indexOf(Story))" ng-if="Story.is_active==false"><strong class="cur">{{".. less"}}</strong></span>
+               </p>
+          <div class="created-wrap clearfix">
+        <div class="createby">Created By: <strong class="text-black">{{Story.created_by}}</strong></div>
+        <div class="create-date" ng-bind="convertToDate(Story.created_date) | date:'MMM-dd'"></div>
+		  </div>
+        <div class="story-wrp-icon"><img src="assets/images/icon-story.png" alt="story"></div>
+      </div>
+    </div>
+</div>
+  </div>
+
+</div>

@@ -1,0 +1,33 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+      <h2 class="page-header">Opportunity <span style="color:black" ng-show="selectedname !='' "> : {{selectedname}}</span></h2>
+    </div>
+  </div>
+  <div class="row" >
+    <div class="h-scroll-page">
+    <div class="col-sm-6" ng-repeat="opportunity in response_opportunities  | filter: {opportunity_category_id:selectedid} " >
+        <div class="story-pannel-body" style="background-color:{{persons[0]}}">
+        <div class="story-list">
+          <ul>
+            <li><span>Title :</span> {{opportunity.opportunity_title}}</li>
+            <li><span>Person Name:</span> {{opportunity.created_by}}</li>
+          </ul>
+        </div>
+           <p class="mt-10" ng-show="opportunity.opportunity_content.length <=80">{{opportunity.opportunity_content | limitTo:80}} </p>
+           <p class="mt-10" ng-show="opportunity.opportunity_content.length >81">{{opportunity.opportunity_content | limitTo:opportunity.is_active ?  100:opportunity.opportunity_content }}
+                    <span style="color:black" > </span>
+                    <span ng-click="showchanges(response_opportunities.indexOf(opportunity))" ng-if="opportunity.is_active==true"  ><strong class="cur">{{".. more"}}</strong></span>
+                    <span ng-click="showchanges(response_opportunities.indexOf(opportunity))" ng-if="opportunity.is_active==false"><strong class="cur">{{".. less"}}</strong></span>
+                   </p>
+            <div class="created-wrap clearfix">
+        <div class="createby">Created By: <strong class="text-black">{{opportunity.created_by}}</strong></div>
+                <div class="create-date" ng-bind="convertToDate(opportunity.created_date) | date:'MMM-dd'"></div>
+		  </div>
+        <div class="story-wrp-icon"><img src="assets/images/icon-story.png" alt="story"></div>
+      </div>
+    </div>
+</div>
+  </div>
+
+</div>
